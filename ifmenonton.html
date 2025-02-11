@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Percabangan</title>
+</head>
+<body>
+    <form action="" method="post" onsubmit="return false">
+        Masukkan Nama <input type="text" name="" id="nama"> <br>
+        Masukkan Usia <input type="text" name="" id="usia"> <br>
+        <button onclick="cek()">Cek Status</button>
+    </form>
+    <p id="hasil"></p>
+    <script>
+        function cek() {
+            let nama = document.getElementById('nama').value
+            let usia = document.getElementById('usia').value
+            if (usia > 17) {
+                document.getElementById('hasil').innerHTML = `${nama}, kamu boleh menonton`
+            }
+            else {
+                document.getElementById('hasil').innerHTML = `${nama}, kamu tidak boleh menonton`
+            }
+        }
+    </script>
+</body>
+</html>

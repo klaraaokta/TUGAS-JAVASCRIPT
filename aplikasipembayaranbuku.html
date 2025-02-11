@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Pembayaran Buku</title>
+</head>
+<body>
+    <h1>Aplikasi Pembayaran Buku</h1>
+    <form>
+        Jumlah Buku<input type="number" id="jumlahbuku">
+        <br><br>
+        <button type="button" onclick="hitungtotal()">hitung total</button>
+    </form>
+    <h2>Hasil:</h2>
+    <p id="hasiljumlah">Jumlah Buku: </p>
+    <p id="hasildiskon">Jumlah Diskon: </p>
+    <p id="hasiltotal">Total Bayar: </p>
+
+    <script>
+        function hitungtotal() {
+            let hargasatuan = 5000
+            let jumlahbuku = parseInt(document.getElementById('jumlahbuku').value)
+            let diskon = 0
+            if (jumlahbuku <= 100) {
+                diskon = 0
+            } else if (jumlahbuku > 100 && jumlahbuku <= 200) {
+                bukusisa = jumlahbuku - 100
+                diskon = (100 * hargasatuan * 0.05) + (bukusisa * hargasatuan * 0.15)
+            } else if (jumlahbuku > 200) {
+                bukusisa = jumlahbuku - 200
+                diskon = (100 * hargasatuan * 0.07) + (100 * hargasatuan * 0.17) + (bukusisa * hargasatuan * 0.27)
+            }
+            let totalharga = (jumlahbuku * hargasatuan) - diskon
+            document.getElementById('hasiljumlah').innerHTML = `jumlah buku: ${jumlahbuku}`
+            document.getElementById('hasildiskon').innerHTML = `jumlah diskon: Rp ${diskon}`
+            document.getElementById('hasiltotal').innerHTML = `total bayar: Rp ${totalharga},00`
+        }
+    </script>
+</body>
+</html>

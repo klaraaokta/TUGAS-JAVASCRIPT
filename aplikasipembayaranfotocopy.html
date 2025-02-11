@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Pembayaran Fotocopy</title>
+</head>
+<body>
+    <h1>Aplikasi Pembayaran Fotocopy</h1>
+    <form>
+        Masukkan Status<select id="status">
+            <option value="Pelanggan">Pelanggan</option>
+            <option value="Bukan Pelanggan">Bukan Pelanggan</option>
+        </select>
+        <br><br>
+        Jumlah Fotocopy<input type="number" id="jumlah">
+        <br><br>
+        <button type="button" onclick="hitungtotal()">Hitung Total</button>
+    </form>
+    <h2>Hasil:</h2>
+    <p id="hasilstatus">Status: </p>
+    <p id="hasiljumlah">Jumlah Fotocopy: </p>
+    <p id="hasiltotal">Total: </p>
+
+    <script>
+        function hitungtotal() {
+            let status = document.getElementById('status').value
+            let jumlah = parseInt(document.getElementById('jumlah').value)
+            let hargaperlembar = 75
+            if (status === "Pelanggan") {
+                hargaperlembar = 75
+            } else {
+                if (jumlah <100) {
+                    hargaperlembar = 100
+                } else {hargaperlembar = 85}
+            }
+            let total = jumlah * hargaperlembar
+            document.getElementById('hasilstatus').innerHTML =`Status: ${status}`
+            document.getElementById('hasiljumlah').innerHTML =`Jumlah Fotocopy: ${jumlah}`
+            document.getElementById('hasiltotal').innerHTML =`Total Bayar: Rp ${total}`
+        }
+    </script>
+</body>
+</html>
