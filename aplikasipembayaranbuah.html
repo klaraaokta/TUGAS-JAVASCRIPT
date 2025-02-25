@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Pembayaran Buah</title>
+</head>
+<body>
+    <h1>Aplikasi Pembayaran Buah</h1>
+    <form method="post" onsubmit="return false">
+        <ol>
+        <li><input type="checkbox" id="menu_1"> Buah Apel (Rp 10.000/kg)
+        <input type="number" id="jml_apel"><br><br></li>
+
+        <li><input type="checkbox" id="menu_2"> Buah Jeruk (Rp 12.000/kg)
+        <input type="number" id="jml_jeruk"><br><br></li>
+
+        <li><input type="checkbox" id="menu_3"> Buah Anggur (Rp 25.000/kg)
+        <input type="number" id="jml_anggur"><br><br></li>
+
+        <li><input type="checkbox" id="menu_4"> Buah Naga (Rp 18.000/kg)
+        <input type="number" id="jml_naga"><br><br></li>
+
+        <li><input type="checkbox" id="menu_5"> Buah Melon (Rp 14.000/kg)
+        <input type="number" id="jml_melon"><br><br></li>
+
+        <li><input type="checkbox" id="menu_6"> Buah Lemon (Rp 9.000/kg)
+        <input type="number" id="jml_lemon"><br><br></li>
+
+        <li><input type="checkbox" id="menu_7"> Buah Jambu (Rp 15.000/kg)
+        <input type="number" id="jml_jambu"><br><br></li>
+
+        <li><input type="checkbox" id="menu_8"> Buah Pisang (Rp 8.000/kg)
+        <input type="number" id="jml_pisang"><br><br></li>
+
+        <li><input type="checkbox" id="menu_9"> Buah Alpukat (Rp 30.000/kg)
+        <input type="number" id="jml_alpukat"><br><br></li>
+
+        <li><input type="checkbox" id="menu_10"> Buah Pepaya (Rp 11.000/kg)
+        <input type="number" id="jml_pepaya"><br><br></li>
+        </ol>
+        <button type="button" onclick="hitungtotal()">Hitung Total</button>
+    </form>
+
+    <h2>Hasil:</h2>
+    <p id="hasiltotalbelanjaan">Total Belanjaan: Rp 0</p>
+    <p id="hasildiskon">Diskon: Rp 0</p>
+    <p id="hasilhargasetelahdiskon">Harga Setelah Diskon: Rp 0</p>
+
+    <script>
+        function hitungtotal() {
+            let totalharga_1 = 0
+            let totalharga_2 = 0
+            let totalharga_3 = 0
+            let totalharga_4 = 0
+            let totalharga_5 = 0
+            let totalharga_6 = 0
+            let totalharga_7 = 0
+            let totalharga_8 = 0
+            let totalharga_9 = 0
+            let totalharga_10 = 0
+
+            if (document.getElementById('menu_1').checked) {
+                totalharga_1 = 10000 * parseInt(document.getElementById('jml_apel').value)
+            }
+            if (document.getElementById('menu_2').checked) {
+                totalharga_2 = 12000 * parseInt(document.getElementById('jml_jeruk').value)
+            }
+            if (document.getElementById('menu_3').checked) {
+                totalharga_3 = 25000 * parseInt(document.getElementById('jml_anggur').value)
+            }
+            if (document.getElementById('menu_4').checked) {
+                totalharga_4 = 18000 * parseInt(document.getElementById('jml_naga').value)
+            }
+            if (document.getElementById('menu_5').checked) {
+                totalharga_5 = 14000 * parseInt(document.getElementById('jml_melon').value)
+            }
+            if (document.getElementById('menu_6').checked) {
+                totalharga_6 = 9000 * parseInt(document.getElementById('jml_lemon').value)
+            }
+            if (document.getElementById('menu_7').checked) {
+                totalharga_7 = 15000 * parseInt(document.getElementById('jml_jambu').value)
+            }
+            if (document.getElementById('menu_8').checked) {
+                totalharga_8 = 8000 * parseInt(document.getElementById('jml_pisang').value)
+            }
+            if (document.getElementById('menu_9').checked) {
+                totalharga_9 = 30000 * parseInt(document.getElementById('jml_alpukat').value)
+            }
+            if (document.getElementById('menu_10').checked) {
+                totalharga_10 = 11000 * parseInt(document.getElementById('jml_pepaya').value)
+            }
+            
+            let totalharga = totalharga_1 + totalharga_2 + totalharga_3 + totalharga_4 + totalharga_5 + totalharga_6 + totalharga_7 + totalharga_8 + totalharga_9 + totalharga_10
+            let diskon = 0;
+
+            if (totalharga > 50000 && totalharga <= 100000) {
+                diskon = totalharga * 0.05
+            }
+            if (totalharga > 100000) {
+                diskon = totalharga * 0.10
+            }
+
+            let hargasetelahdiskon = totalharga - diskon
+            document.getElementById('hasiltotalbelanjaan').innerHTML = `Total Belanjaan: Rp ${totalharga}`
+            document.getElementById('hasildiskon').innerHTML = `Diskon: Rp ${diskon}`
+            document.getElementById('hasilhargasetelahdiskon').innerHTML = `Harga Setelah Diskon: Rp ${hargasetelahdiskon}`
+        }
+    </script>
+</body>
+</html>
